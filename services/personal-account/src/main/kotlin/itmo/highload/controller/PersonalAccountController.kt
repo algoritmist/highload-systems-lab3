@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("\${app.base-url}/place")
+@RequestMapping("\${app.base-url}/account")
 class PersonalAccountController(val placeService: PersonalAccountService) {
     @Autowired
     private lateinit var template : KafkaTemplate<String, String>
