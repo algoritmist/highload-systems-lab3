@@ -30,7 +30,7 @@ spring:
         - id: personal-account-service
           uri: lb://PERSONAL-ACCOUNT-SERVICE
           predicates:
-            - Path=/api/v1/account/
+            - Path=/api/v1/account/**
       discovery:
         locator:
           enabled: true

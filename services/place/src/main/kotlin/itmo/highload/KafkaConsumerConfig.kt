@@ -16,7 +16,7 @@ class KafkaConsumerConfig {
     @Bean
     fun consumerFactory(): ConsumerFactory<String, String> {
         val config: MutableMap<String, Any> = HashMap()
-        config[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG] = "localhost:9092"
+        config[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG] = "kafka:9092"
         config[ConsumerConfig.GROUP_ID_CONFIG] = "group_id"
         config[ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG] = StringDeserializer::class.java
         config[ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG] = StringDeserializer::class.java
