@@ -85,7 +85,9 @@ services:
       - '8086:8086'
     depends_on:
       eureka-server:
-        condition: service_healthy
+          condition: service_healthy
+      kafka:
+          condition: service_healthy
     env_file:
       - .env
     <<: *default-healthcheck
@@ -149,6 +151,8 @@ services:
       - backend
   personal-account:
     image: magenta/highload/personal-account:dev
+    depends_on:
+      - kafka
 
   mongo-express:
     image: mongo-express
@@ -178,9 +182,17 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - "2181:2181"
+    networks:
+      - backend
   kafka:
     image: confluentinc/cp-kafka:7.5.0
     container_name: kafka
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z localhost 9092 || exit 1" ]
+      start_period: 10s
+      interval: 5s
+      timeout: 10s
+      retries: 5
     depends_on:
       - zookeeper
     environment:
@@ -191,6 +203,8 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     ports:
       - "9092:9092"
+    networks:
+      - backend
 
 volumes:
   mongo:

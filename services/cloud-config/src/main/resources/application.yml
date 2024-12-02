@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:missmagenta/highload-systems-lab2.git
+          uri: git@github.com:algoritmist/highload-systems-lab3.git
           search-paths:
             - config
           clone-on-start: true
