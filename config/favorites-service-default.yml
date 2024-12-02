@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: favorites-service
+  data:
+    mongodb:
+        url: mongodb://mongo:mongo@mongo:27017/testbase?authSource=admin&directConnection=true
+        database: testbase
+        authentication-database: admin
+        
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  main:
+    web-application-type: reactive
+
+app:
+  base-url: /api/v1
+
+server:
+  port: 8089
+
+jwt:
+  secret:
+    sign: ${JWT_SECRET:0LHQvtC20LUg0L/QvtC80L7Qs9C4INC90LDQvCDQt9Cw0LrRgNGL0YLRjCDRjdGC0L7RgiDQv9GA0LXQtNC80LXRgg==}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/

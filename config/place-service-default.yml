@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: place-service
+  data:
+    web:
+      pageable:
+        max-page-size: 50
+    mongodb:
+        url: mongodb://mongo:mongo@mongo:27017/testbase?authSource=admin&directConnection=true
+        database: testbase
+        authentication-database: admin
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  main:
+    web-application-type: reactive
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/
+
+app:
+  base-url: /api/v1
+
+server:
+  port: 8086
+
+jwt:
+  secret:
+    sign: ${JWT_SECRET:0LHQvtC20LUg0L/QvtC80L7Qs9C4INC90LDQvCDQt9Cw0LrRgNGL0YLRjCDRjdGC0L7RgiDQv9GA0LXQtNC80LXRgg==}
