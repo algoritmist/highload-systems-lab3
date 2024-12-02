@@ -23,9 +23,9 @@ class UsersServiceTest {
     private val userService = UserService(userRepository, passwordEncoder)
 
 
-    private val jwtProvider: JwtUtils = mockk()
-    private val encoder: PasswordEncoder = mockk()
-    private val authService = AuthService(jwtProvider, userService, encoder)
+    //private val jwtProvider: JwtUtils = mockk()
+    //private val encoder: PasswordEncoder = mockk()
+    //private val authService = AuthService(jwtProvider, userService, encoder)
 
     @Test
     fun `should return user when found by login`() {

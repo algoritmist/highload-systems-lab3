@@ -37,7 +37,8 @@ class FeedbackServiceTest {
     private val routeServiceFallback: RouteServiceFallback = RouteServiceFallback()
 
 
-    private val feedbackService = FeedbackService(routeFeedbackRepository, placeFeedbackRepository, routeService, placeService)
+    private val feedbackService =
+        FeedbackService(routeFeedbackRepository, placeFeedbackRepository, routeService, placeService)
 
     private val routeId = "route123"
     private val placeId = "place123"
@@ -130,7 +131,9 @@ class FeedbackServiceTest {
     @Test
     fun `should create place feedback when place exists`() {
         val feedback = CreatePlaceFeedbackRequest("place1",  5)
-        val place = PlaceResponse(id = "place1", name = "Place 1", coordinates = Coordinates(12.34, 56.78), owners = listOf(), tags = listOf(), description = "Description")
+        val place =
+            PlaceResponse(id = "place1", name = "Place 1", coordinates = Coordinates(12.34, 56.78),
+                owners = listOf(), tags = listOf(), description = "Description")
         val expectedFeedback = PlaceFeedback(placeId = "place1", grade = Grade(userId = "user1", grade = 5))
 
         every { placeService.getPlace(feedback.placeId, any()) } returns Mono.just(place)
