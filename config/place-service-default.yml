@@ -13,6 +13,8 @@ spring:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   main:
     web-application-type: reactive
+  kafka:
+    bootstrap-servers: localhost:9092
 
 eureka:
   client:

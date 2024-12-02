@@ -27,3 +27,7 @@ include("services:favorites")
 findProject(":services:favorites")?.name = "favorites"
 include("shared:integration-tests")
 findProject(":shared:integration-tests")?.name = "integration-tests"
+include("services:personal-account")
+findProject(":services:personal-account")?.name = "personal-account"
+include("services:personal-account")
+findProject(":services:personal-account")?.name = "personal-account"

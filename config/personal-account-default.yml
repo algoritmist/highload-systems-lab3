@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: personal-account-service
+  main:
+    web-application-type: reactive
+  kafka:
+    bootstrap-servers: localhost:9092
+
+app:
+  base-url: /api/v1
+
+server:
+  port: 8086
+
+jwt:
+  secret:
+    sign: ${JWT_SECRET:0LHQvtC20LUg0L/QvtC80L7Qs9C4INC90LDQvCDQt9Cw0LrRgNGL0YLRjCDRjdGC0L7RgiDQv9GA0LXQtNC80LXRgg==}

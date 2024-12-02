@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import org.springframework.kafka.annotation.KafkaListener
 
 @RestController
 @RequestMapping("\${app.base-url}/place")
@@ -103,4 +104,10 @@ class PlaceController(val placeService: PlaceService, private val jwtUtils: JwtU
         return placeService.deletePlace(id, ownerId, token)
     }
 
+    @GetMapping("/dummy")
+    @ResponseStatus(HttpStatus.OK)
+    @KafkaListener(topics = ["example-topic"], groupId = "group_id")
+    fun receiveKafkaMessage(message: String) : Mono<String>{
+        return Mono.just(message)
+    }
 }
