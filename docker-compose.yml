@@ -33,7 +33,7 @@ services:
     image: magenta/highload/cloud-config:dev
     working_dir: /app
     volumes:
-      - ~/.ssh/highload-cloud-config-ro:/root/.ssh/id_rsa:ro
+      - ~/.ssh/github:/root/.ssh/id_rsa:ro
       - ./config:/app/config
     environment:
       SPRING_PROFILES_ACTIVE: standalone,native
