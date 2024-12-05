@@ -86,7 +86,7 @@ services:
     depends_on:
       eureka-server:
           condition: service_healthy
-      kafka:
+      kafka1:
           condition: service_healthy
     env_file:
       - .env
@@ -154,7 +154,7 @@ services:
     depends_on:
       eureka-server:
         condition: service_healthy
-      kafka:
+      kafka1:
         condition: service_healthy
 
   mongo-express:
@@ -187,11 +187,11 @@ services:
       - "2181:2181"
     networks:
       - backend
-  kafka:
+  kafka1:
     image: confluentinc/cp-kafka:7.5.0
-    container_name: kafka
+    container_name: kafka1
     healthcheck:
-      test: [ "CMD-SHELL", "nc -z localhost 9092 || exit 1" ]
+      test: [ "CMD-SHELL", "nc -z localhost 9091 || exit 1" ]
       start_period: 10s
       interval: 5s
       timeout: 10s
@@ -202,13 +202,54 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9091
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+    ports:
+      - "9091:9091"
+    networks:
+      - backend
+  kafka2:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka2
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z localhost 9092 || exit 1" ]
+      start_period: 10s
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
     ports:
       - "9092:9092"
     networks:
       - backend
-
+  kafka3:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka3
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z localhost 9093 || exit 1" ]
+      start_period: 10s
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+    ports:
+      - "9093:9093"
+    networks:
+      - backend
 volumes:
   mongo:
   
