@@ -40,5 +40,5 @@ dependencies {
 }
 
 highloadApp {
-    serviceName.set("personal-account")
+    serviceName.set("admin-dashboard")
 }

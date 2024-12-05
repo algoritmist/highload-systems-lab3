@@ -21,9 +21,9 @@ import reactivefeign.spring.config.EnableReactiveFeignClients
         UserDetailsServiceAutoConfiguration::class
     ]
 )
-class PersonalAccountApplication
+class AdminDashboardApplication
 
 @Suppress("SpreadOperator")
 fun main(args: Array<String>) {
-    runApplication<PersonalAccountApplication>(*args)
+    runApplication<AdminDashboardApplication>(*args)
 }
