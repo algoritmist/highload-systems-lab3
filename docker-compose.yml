@@ -149,8 +149,8 @@ services:
     <<: *default-healthcheck
     networks:
       - backend
-  personal-account:
-    image: magenta/highload/personal-account:dev
+  admin-dashboard:
+    image: magenta/highload/admin-dashboard:dev
     depends_on:
       eureka-server:
         condition: service_healthy

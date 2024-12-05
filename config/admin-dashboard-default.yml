@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: admin-dashboard-service
+  main:
+    web-application-type: reactive
+  kafka:
+    bootstrap-servers:
+    - "kafka1:9091"
+    - "kafka2:9092"
+    - "kafka3:9093"
+  consumer:
+    group-id: admin-group
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+app:
+  base-url: /api/v1
+
+server:
+  port: 8090
+
+jwt:
+  secret:
+    sign: ${JWT_SECRET:0LHQvtC20LUg0L/QvtC80L7Qs9C4INC90LDQvCDQt9Cw0LrRgNGL0YLRjCDRjdGC0L7RgiDQv9GA0LXQtNC80LXRgg==}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/

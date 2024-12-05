@@ -1,5 +1,5 @@
 spring:
   application:
-    name: personal-account-service
+    name: admin-dashboard
   config:
     import: 'configserver:http://${CLOUD_CONFIG_HOST:localhost}:8888'

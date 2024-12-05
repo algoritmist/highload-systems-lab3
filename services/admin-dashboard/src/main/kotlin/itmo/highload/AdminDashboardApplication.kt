@@ -1,5 +1,7 @@
 package itmo.highload
 
+import itmo.highload.config.KafkaConsumerConfig
+import itmo.highload.config.KafkaProducerConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
@@ -14,7 +16,6 @@ import reactivefeign.spring.config.EnableReactiveFeignClients
 @EnableFeignClients
 @EnableReactiveFeignClients
 @EnableHystrix
-@Import(KafkaProducerConfig::class)
 @SpringBootApplication(
     exclude = [
         SecurityAutoConfiguration::class,
