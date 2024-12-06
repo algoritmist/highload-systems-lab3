@@ -1,7 +1,5 @@
 package itmo.highload
 
-import itmo.highload.config.KafkaConsumerConfig
-import itmo.highload.config.KafkaProducerConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration

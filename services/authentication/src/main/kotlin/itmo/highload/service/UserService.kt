@@ -21,10 +21,11 @@ class UserService(
             login = request.login,
             password = encoder.encode(request.password),
             role = request.role,
-            registrationDate = LocalDate.now()
+            registrationDate = LocalDate.now(),
         )
         return userRepository.save(user)
     }
 
     fun checkIfExists(login: String): Mono<Boolean> = userRepository.findByLogin(login).hasElement()
+
 }

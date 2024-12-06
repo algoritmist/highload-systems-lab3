@@ -37,11 +37,11 @@ class KafkaProducerConfig {
         return DefaultKafkaProducerFactory(securityProducersConfig())
     }
 
-    @Bean(name = ["authEventKafkaTemplate"])
+    @Bean
     fun authEventKafkaTemplate(): KafkaTemplate<String, AuthEvent> {
         return KafkaTemplate(authEventProducerFactory())
     }
-    @Bean(name = ["authActionKafkaTemplate"])
+    @Bean
     fun authActionKafkaTemplate(): KafkaTemplate<String, AuthAction>{
         return KafkaTemplate(authActionProducerFactory())
     }

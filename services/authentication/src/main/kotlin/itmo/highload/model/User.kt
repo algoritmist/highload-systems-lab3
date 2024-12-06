@@ -17,5 +17,5 @@ data class User(
     @Field("role")
     val role: Role,
     @Field("registration_date")
-    var registrationDate: LocalDate,
+    var registrationDate: LocalDate
 )

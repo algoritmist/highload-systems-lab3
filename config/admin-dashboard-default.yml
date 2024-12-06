@@ -8,19 +8,16 @@ spring:
     - "kafka1:9091"
     - "kafka2:9092"
     - "kafka3:9093"
-  consumer:
-    group-id: admin-group
-    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  producer:
-    key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: security-events
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 app:
   base-url: /api/v1
 
 server:
-  port: 8090
+  port: 9201
 
 jwt:
   secret:
