@@ -22,7 +22,7 @@ class AdminService {
     @Autowired
     private lateinit var authActionKafkaTemplate: KafkaTemplate<String, AuthAction>
 
-    @KafkaListener(topics = ["auth-event"], groupId = "security-events", containerFactory = "authEventConsumerFactory")
+    @KafkaListener(topics = ["auth-event"], groupId = "security-events", containerFactory = "authEventKafkaListenerContainerFactory")
     fun `ban suspicious users`(@Payload message: AuthEvent){
         val login = message.login
         if(message.type == AuthEventType.LOGIN_SUCCESS){

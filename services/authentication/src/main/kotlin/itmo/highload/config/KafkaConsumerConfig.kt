@@ -5,11 +5,13 @@ import itmo.highload.api.events.AuthEvent
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory
 import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
 import org.springframework.kafka.support.serializer.JsonDeserializer
 
+@Configuration
 class KafkaConsumerConfig {
     @Bean
     fun securityConsumersConfig(): Map<String, Any>{
@@ -23,19 +25,23 @@ class KafkaConsumerConfig {
 
     @Bean
     fun authEventConsumerFactory(): ConsumerFactory<String, AuthEvent>{
+        val serializer = JsonDeserializer<AuthEvent>()
+        serializer.addTrustedPackages("*")
         return DefaultKafkaConsumerFactory(
             securityConsumersConfig(),
             StringDeserializer(),
-            JsonDeserializer<AuthEvent>()
+            serializer
         )
     }
 
     @Bean
     fun authActionConsumerFactory(): ConsumerFactory<String, AuthAction>{
+        val serializer = JsonDeserializer<AuthAction>()
+        serializer.addTrustedPackages("*")
         return DefaultKafkaConsumerFactory(
             securityConsumersConfig(),
             StringDeserializer(),
-            JsonDeserializer<AuthAction>()
+            serializer
         )
     }
 
