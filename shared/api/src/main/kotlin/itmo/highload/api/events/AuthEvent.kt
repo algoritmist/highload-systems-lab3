@@ -2,7 +2,7 @@ package itmo.highload.api.events
 
 import java.time.Instant
 
-class AuthEvent(
+data class AuthEvent(
     val type: AuthEventType,
     val login: String,
     val message: String,

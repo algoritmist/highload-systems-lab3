@@ -151,11 +151,15 @@ services:
       - backend
   admin-dashboard:
     image: magenta/highload/admin-dashboard:dev
+    env_file:
+      - .env
     depends_on:
       eureka-server:
         condition: service_healthy
       kafka1:
         condition: service_healthy
+    networks:
+      - backend
 
   mongo-express:
     image: mongo-express

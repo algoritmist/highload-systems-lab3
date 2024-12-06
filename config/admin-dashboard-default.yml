@@ -3,15 +3,17 @@ spring:
     name: admin-dashboard-service
   main:
     web-application-type: reactive
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   kafka:
     bootstrap-servers:
     - "kafka1:9091"
     - "kafka2:9092"
     - "kafka3:9093"
-    consumer:
-      group-id: security-events
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    consumer:
+#      group-id: security-events
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
 app:
   base-url: /api/v1

@@ -1,6 +1,6 @@
 package itmo.highload.api.actions
 
-class AuthAction (
+data class AuthAction (
     val login: String,
     val type: AuthActionType,
     val comment: String

@@ -7,7 +7,9 @@ import itmo.highload.api.events.AuthEventType
 import itmo.highload.api.events.CriticalEvent
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.annotation.KafkaListener
+import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.core.KafkaTemplate
+import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Service
 import java.time.Duration
 import java.time.Instant
@@ -20,8 +22,8 @@ class AdminService {
     @Autowired
     private lateinit var authActionKafkaTemplate: KafkaTemplate<String, AuthAction>
 
-    @KafkaListener(topics = ["auth-event"], groupId = "security-events")
-    fun `ban suspicious users`(message: AuthEvent){
+    @KafkaListener(topics = ["auth-event"], groupId = "security-events", containerFactory = "authEventConsumerFactory")
+    fun `ban suspicious users`(@Payload message: AuthEvent){
         val login = message.login
         if(message.type == AuthEventType.LOGIN_SUCCESS){
             if(bannedUsers.containsKey(login)){

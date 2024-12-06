@@ -39,21 +39,38 @@ class AuthService(
 
     fun login(login: String, password: String): Mono<JwtResponse> = userService.getByLogin(login).flatMap { user ->
         if(bannedUsers.contains(login)){
-            /*authEventKafkaTemplate.send("auth-event",
-                AuthEvent(AuthEventType.LOGIN_REATTEMPT, login, "Login reattempt", Instant.now()))
-            */
+            try {
+                authEventKafkaTemplate.send(
+                    "auth-event",
+                    AuthEvent(AuthEventType.LOGIN_REATTEMPT, login, "Login reattempt", Instant.now())
+                )
+            }
+            catch(e: Exception){
+                e.printStackTrace()
+            }
             Mono.error(BadCredentialsException(bannedUsers[login]))
         }
         else {
             if (!encoder.matches(password, user.password)) {
-                /*authEventKafkaTemplate.send("auth-event",
-                    AuthEvent(AuthEventType.LOGIN_FAIL, login, "Wrong login or password", Instant.now()))
-                */
+                try {
+                    authEventKafkaTemplate.send(
+                        "auth-event",
+                        AuthEvent(AuthEventType.LOGIN_FAIL, login, "Wrong login or password", Instant.now())
+                    )
+                }
+                catch(e: Exception){
+                    e.printStackTrace()
+                }
                 Mono.error(BadCredentialsException("Wrong login or password"))
             } else {
-                /*authEventKafkaTemplate.send("auth-event",
-                    AuthEvent(AuthEventType.LOGIN_SUCCESS, login, "Successful login", Instant.now()))
-                */val accessToken: String = jwtProvider.generateAccessToken(user.login, user.role, user.id!!)
+                try{
+                    authEventKafkaTemplate.send("auth-event",
+                        AuthEvent(AuthEventType.LOGIN_SUCCESS, login, "Successful login", Instant.now()))
+                }
+                catch(e: Exception){
+                    e.printStackTrace()
+                }
+                val accessToken: String = jwtProvider.generateAccessToken(user.login, user.role, user.id!!)
                 Mono.just(JwtResponse(accessToken, user.role))
             }
         }
