@@ -42,7 +42,7 @@ class AuthController(private val authService: AuthService) {
     }
 
     @PostMapping("/register")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     fun register(@RequestBody @Valid request: RegisterDto): Mono<String> =
         authService.checkIfUserExists(request.login).flatMap { exists ->
             if (exists) {

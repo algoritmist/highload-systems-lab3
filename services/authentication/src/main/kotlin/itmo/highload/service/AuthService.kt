@@ -27,7 +27,7 @@ class AuthService(
     @Autowired
     private lateinit var authEventKafkaTemplate: KafkaTemplate<String, AuthEvent>
 
-    @KafkaListener(topics = ["auth-action"], groupId = "security-events")
+    /*@KafkaListener(topics = ["auth-action"], groupId = "security-events")
     fun `take security action for user`(message: AuthAction){
         if(message.type == AuthActionType.BAN){
             bannedUsers[message.login] = message.comment
@@ -35,23 +35,25 @@ class AuthService(
         else{
             bannedUsers.remove(message.login)
         }
-    }
+    }*/
 
     fun login(login: String, password: String): Mono<JwtResponse> = userService.getByLogin(login).flatMap { user ->
         if(bannedUsers.contains(login)){
-            authEventKafkaTemplate.send("auth-event",
+            /*authEventKafkaTemplate.send("auth-event",
                 AuthEvent(AuthEventType.LOGIN_REATTEMPT, login, "Login reattempt", Instant.now()))
+            */
             Mono.error(BadCredentialsException(bannedUsers[login]))
         }
         else {
             if (!encoder.matches(password, user.password)) {
-                authEventKafkaTemplate.send("auth-event",
+                /*authEventKafkaTemplate.send("auth-event",
                     AuthEvent(AuthEventType.LOGIN_FAIL, login, "Wrong login or password", Instant.now()))
+                */
                 Mono.error(BadCredentialsException("Wrong login or password"))
             } else {
-                authEventKafkaTemplate.send("auth-event",
+                /*authEventKafkaTemplate.send("auth-event",
                     AuthEvent(AuthEventType.LOGIN_SUCCESS, login, "Successful login", Instant.now()))
-                val accessToken: String = jwtProvider.generateAccessToken(user.login, user.role, user.id!!)
+                */val accessToken: String = jwtProvider.generateAccessToken(user.login, user.role, user.id!!)
                 Mono.just(JwtResponse(accessToken, user.role))
             }
         }
