@@ -1,9 +1,11 @@
 package itmo.highload.config
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType
 import io.swagger.v3.oas.annotations.info.Contact
 import io.swagger.v3.oas.annotations.info.Info
 import io.swagger.v3.oas.annotations.info.License
+import io.swagger.v3.oas.annotations.security.SecurityScheme
 import io.swagger.v3.oas.annotations.servers.Server
 import io.swagger.v3.oas.annotations.tags.Tag
 
@@ -32,5 +34,11 @@ import io.swagger.v3.oas.annotations.tags.Tag
             description = "Production environment"
         )
     ]
+)
+@SecurityScheme(
+    name = "Bearer Authentication",
+    type = SecuritySchemeType.HTTP,
+    bearerFormat = "JWT",
+    scheme = "bearer"
 )
 class OpenApiConfig
