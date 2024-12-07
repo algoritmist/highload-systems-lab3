@@ -27,7 +27,7 @@ class AuthService(
     @Autowired
     private lateinit var authEventKafkaTemplate: KafkaTemplate<String, AuthEvent>
 
-    /*@KafkaListener(topics = ["auth-action"], groupId = "security-events")
+    @KafkaListener(topics = ["auth-action"], groupId = "security-events", containerFactory = "authActionKafkaListenerContainerFactory")
     fun `take security action for user`(message: AuthAction){
         if(message.type == AuthActionType.BAN){
             bannedUsers[message.login] = message.comment
@@ -35,7 +35,7 @@ class AuthService(
         else{
             bannedUsers.remove(message.login)
         }
-    }*/
+    }
 
     fun login(login: String, password: String): Mono<JwtResponse> = userService.getByLogin(login).flatMap { user ->
         if(bannedUsers.contains(login)){
