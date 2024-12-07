@@ -33,4 +33,4 @@ jwt:
 
 springdoc:
   api-docs:
-      place-service: /place-service/v3/api-docs
+      path: /v3/api-docs
