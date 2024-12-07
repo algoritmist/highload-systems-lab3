@@ -8,7 +8,7 @@ spring:
     gateway:
       routes:
         - id: place-service
-          uri: "lb://place:8086"
+          uri: lb://PLACE-SERVICE
           predicates:
             - Path=/api/v1/place/**
         - id: route-service
