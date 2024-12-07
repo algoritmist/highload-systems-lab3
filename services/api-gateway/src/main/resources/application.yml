@@ -3,3 +3,12 @@ spring:
     name: api-gateway
   config:
     import: 'configserver:http://${CLOUD_CONFIG_HOST:localhost}:8888'
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    urls:
+      - url: /place-service/v3/api-docs
+        name: Auth Service
