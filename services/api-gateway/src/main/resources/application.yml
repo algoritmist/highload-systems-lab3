@@ -10,5 +10,5 @@ springdoc:
   swagger-ui:
     enabled: true
     urls:
-      - url: /place-service/v3/api-docs
+      - url: /api/v1/place/v3/api-docs
         name: Auth Service
