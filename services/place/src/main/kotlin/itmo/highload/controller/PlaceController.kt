@@ -1,5 +1,10 @@
 package itmo.highload.controller
 
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.Schema
+import io.swagger.v3.oas.annotations.responses.ApiResponse
+import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.api.dto.PlaceDto
 import itmo.highload.api.dto.UpdatePlaceDescriptionDto
 import itmo.highload.api.dto.UpdatePlaceNameDto
@@ -18,6 +23,7 @@ import reactor.core.publisher.Mono
 import org.springframework.kafka.annotation.KafkaListener
 
 @RestController
+@Tag(name = "place_controller", description = "Rest API for places")
 @RequestMapping("\${app.base-url}/place")
 class PlaceController(val placeService: PlaceService, private val jwtUtils: JwtUtils) {
     @GetMapping

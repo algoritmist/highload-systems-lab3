@@ -14,6 +14,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("io.projectreactor:reactor-core")
     implementation("org.springframework.boot:spring-boot-starter-actuator:3.3.2")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.6.0")
 
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
