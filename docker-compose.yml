@@ -160,6 +160,19 @@ services:
         condition: service_healthy
     networks:
       - backend
+    <<: *default-healthcheck
+  files:
+    image: magenta/highload/files:dev
+    env_file:
+      - .env
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      kafka1:
+        condition: service_healthy
+    networks:
+      - backend
+    <<: *default-healthcheck
 
   mongo-express:
     image: mongo-express
