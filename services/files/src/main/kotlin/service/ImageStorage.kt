@@ -1,6 +1,6 @@
 package service
 
-import itmo.highload.config.S3Config
+import config.S3Config
 import itmo.highload.exceptions.S3UploadException
 import org.springframework.stereotype.Component
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials

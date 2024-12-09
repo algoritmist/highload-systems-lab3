@@ -4,9 +4,11 @@ import itmo.highload.api.dto.ProcessPlaceImageRequest
 import itmo.highload.service.WebSocketPlaceImageClient
 import itmo.highload.exceptions.IllegalFileSizeException
 import itmo.highload.exceptions.InvalidFileTypeException
+import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 import java.util.*
 
+@Component
 class PlaceImageHandler(
     private val client: WebSocketPlaceImageClient
 ) {
