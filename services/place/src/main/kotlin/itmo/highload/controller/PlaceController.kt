@@ -24,7 +24,7 @@ import org.springframework.kafka.annotation.KafkaListener
 
 @RestController
 @Tag(name = "place_controller", description = "Rest API for places")
-@RequestMapping("\${app.base-url}/place")
+@RequestMapping("/place")
 class PlaceController(val placeService: PlaceService, private val jwtUtils: JwtUtils) {
     @GetMapping
     @PreAuthorize("hasAnyAuthority('OWNER', 'USER')")

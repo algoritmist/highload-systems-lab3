@@ -17,7 +17,7 @@ import org.springframework.web.server.ServerWebExchange
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("\${app.base-url}/auth")
+@RequestMapping("\/auth")
 class AuthController(private val authService: AuthService) {
 
     @PostMapping("/login")

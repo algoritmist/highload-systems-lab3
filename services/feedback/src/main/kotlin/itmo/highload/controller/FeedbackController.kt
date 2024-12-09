@@ -15,7 +15,7 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("\${app.base-url}/feedback")
+@RequestMapping("\/feedback")
 class FeedbackController(
     private val feedbackService: FeedbackService, private val jwtUtils: JwtUtils
 ) {
