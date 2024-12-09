@@ -27,6 +27,8 @@ spring:
           uri: lb://AUTHENTICATION-SERVICE
           predicates:
             - Path=/auth/**
+            - Path=/auth/v3/api-docs
+            - Method=GET
         - id: admin-dashboard-service
           uri: lb://ADMIN-DASHBOARD-SERVICE
           predicates:
