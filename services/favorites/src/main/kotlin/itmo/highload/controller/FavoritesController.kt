@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("\$/favorites")
+@RequestMapping("/favorites")
 class FavoritesController(
     private val favoritesService: FavoritesService, private val jwtUtils: JwtUtils
 ) {
