@@ -1,5 +1,6 @@
 package itmo.highload.controller
 
+import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.api.dto.CreatePlaceFeedbackRequest
 import itmo.highload.api.dto.CreateRouteFeedbackRequest
 import itmo.highload.api.dto.response.PlaceFeedbackResponse
@@ -16,6 +17,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/feedback")
+@Tag(name = "feedback_controller", description = "Rest API for favorites service")
 class FeedbackController(
     private val feedbackService: FeedbackService, private val jwtUtils: JwtUtils
 ) {

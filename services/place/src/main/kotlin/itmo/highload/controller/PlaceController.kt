@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono
 import org.springframework.kafka.annotation.KafkaListener
 
 @RestController
-@Tag(name = "place_controller", description = "Rest API for places")
+@Tag(name = "place_controller", description = "Rest API for place service")
 @RequestMapping("/place")
 class PlaceController(val placeService: PlaceService, private val jwtUtils: JwtUtils) {
     @GetMapping

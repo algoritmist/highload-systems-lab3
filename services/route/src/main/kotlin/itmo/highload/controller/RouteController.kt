@@ -1,5 +1,6 @@
 package itmo.highload.controller
 
+import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.api.dto.CreateRouteRequest
 import itmo.highload.api.dto.response.RouteResponse
 import itmo.highload.model.RouteRequestMapper
@@ -14,6 +15,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/route")
+@Tag(name = "route_controller", description = "Rest API for route service")
 class RouteController(
     private val routeService: RouteService, private val jwtUtils: JwtUtils
 ) {

@@ -11,9 +11,9 @@ import io.swagger.v3.oas.annotations.tags.Tag
 
 @OpenAPIDefinition(
     info = Info(
-        title = "Place Service API",
+        title = "Route Service API",
         version = "1.0.0",
-        description = "API documentation for managing places in the application.",
+        description = "API documentation for route service",
         contact = Contact(
             name = "Vyacheslav",
             email = "335185@niuitmo.ru",
@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag
     ),
     servers = [
         Server(
-            url = "http://localhost:8080",
+            url = "http://localhost:\${server.port}",
             description = "Local environment"
         )
     ]

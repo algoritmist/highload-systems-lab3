@@ -1,5 +1,6 @@
 package itmo.highload.controller
 
+import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.api.dto.CreateFavoritesRequest
 import itmo.highload.api.dto.response.FavoritesResponse
 import itmo.highload.model.FavoritesMapper
@@ -14,6 +15,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/favorites")
+@Tag(name = "favorites_controller", description = "Rest API for favorites service")
 class FavoritesController(
     private val favoritesService: FavoritesService, private val jwtUtils: JwtUtils
 ) {

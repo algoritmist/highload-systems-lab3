@@ -1,5 +1,6 @@
 package itmo.highload.controller
 
+import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.dto.LoginDto
 import itmo.highload.dto.RegisterDto
 import itmo.highload.security.dto.JwtResponse
@@ -18,6 +19,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "auth_controller", description = "Rest API for auth service")
 class AuthController(private val authService: AuthService) {
 
     @PostMapping("/login")

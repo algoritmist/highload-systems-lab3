@@ -10,5 +10,13 @@ springdoc:
   swagger-ui:
     enabled: true
     urls:
-      - url: /place/v3/api-docs
+      - url: /auth/v3/api-docs
         name: Auth Service
+      - url: /favorites/v3/api-docs
+        name: Favorites Service
+      - url: /feedback/v3/api-docs
+        name: Feedback Service
+      - url: /place/v3/api-docs
+        name: Place Service
+      - url: /route/v3/api-docs
+        name: Route Service
