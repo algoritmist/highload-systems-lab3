@@ -13,7 +13,7 @@ class PlaceImageService(
     private val storage: ImageStorage
 ) {
     private val imageSizePixels = 100
-    fun processImage(placeId: String, imageBytes: ByteArray, token: String): PlaceImage{
+    fun processImage(placeId: String, imageBytes: ByteArray): PlaceImage{
         val imageIS = ByteArrayInputStream(imageBytes)
         val image = ImageIO.read(imageIS)
         val minSize = min(image.width, image.height)

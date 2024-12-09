@@ -29,7 +29,7 @@ class WebSocketConfig(
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint("/app/files")
+        registry.addEndpoint("/app/process-image")
             .setAllowedOrigins("*")
     }
 

@@ -16,7 +16,7 @@ class KafkaFileConsumerConfig {
     fun placeFileConsumerConfig(): Map<String, Any>{
         return mapOf(
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "kafka1:9091,kafka2:9092,kafka3:9093",
-            ConsumerConfig.GROUP_ID_CONFIG to "processed-images",
+            ConsumerConfig.GROUP_ID_CONFIG to "file-processing",
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class,
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to JsonDeserializer::class
         )

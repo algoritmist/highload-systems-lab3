@@ -3,10 +3,10 @@ package controller
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.api.dto.ProcessPlaceImageRequest
-import itmo.highload.service.PlaceImageProducer
-import itmo.highload.service.PlaceImageService
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.stereotype.Controller
+import service.PlaceImageProducer
+import service.PlaceImageService
 import java.util.*
 
 
@@ -21,9 +21,8 @@ class PlaceImageController(
     fun processImage(request: ProcessPlaceImageRequest){
         val imageResource = placeImageService.processImage(
             request.placeId,
-            Base64.getDecoder().decode(request.encodedImage),
-            request.token
-            )
+            Base64.getDecoder().decode(request.encodedImage)
+        )
         placeImageProducer.send(imageResource)
     }
 }

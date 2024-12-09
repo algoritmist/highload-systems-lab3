@@ -32,7 +32,7 @@ import org.springframework.web.multipart.MultipartFile
 class PlaceController(
     val placeService: PlaceService,
     private val jwtUtils: JwtUtils,
-    private val imageHandler: PlaceImageServiceSessionHandler
+    private val imageHandler: PlaceImageHandler
 ) {
     @GetMapping
     @PreAuthorize("hasAnyAuthority('OWNER', 'USER')")
@@ -116,5 +116,17 @@ class PlaceController(
     ): Mono<Void> {
         val ownerId = jwtUtils.extractUserId(token)
         return placeService.deletePlace(id, ownerId, token)
+    }
+
+    @PostMapping("/upload-image/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('OWNER')")
+    fun uploadPlaceImage(
+        @PathVariable id: String,
+        file: MultipartFile,
+        @RequestHeader("Authorization") token: String
+    ) : Mono<String>{
+        imageHandler.handleFile(id, file)
+        return Mono.just("Image processing, wait for operation to complete")
     }
 }

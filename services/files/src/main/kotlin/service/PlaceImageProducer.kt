@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component
 
 @Component
 class PlaceImageProducer(
-    private val imageFileKafkaTemplate: KafkaTemplate<String, PlaceImage>
+    private val fileProducerKafkaTemplate: KafkaTemplate<String, PlaceImage>
 ) {
     fun send(image: PlaceImage){
-        imageFileKafkaTemplate.send("processed-place-images", image)
+        fileProducerKafkaTemplate.send("processed-place-images", image)
     }
 }
