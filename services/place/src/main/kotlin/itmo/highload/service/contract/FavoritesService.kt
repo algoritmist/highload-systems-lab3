@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono
 
 @ReactiveFeignClient(
     value = "favorites-service",
-    url = "http://favorites:8089/api/v1",
+    url = "http://favorites:8089",
     fallback = FavoritesServiceFallback::class
 )
 interface FavoritesService {

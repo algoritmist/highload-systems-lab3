@@ -21,8 +21,8 @@ spring:
 server:
   port: 8087
 
-app:
-  base-url: /api/v1
+#app:
+#  base-url:
 
 jwt:
   secret:

@@ -15,8 +15,8 @@ spring:
 #      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 #      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
-app:
-  base-url: /api/v1
+#app:
+#  base-url:
 
 server:
   port: 9201

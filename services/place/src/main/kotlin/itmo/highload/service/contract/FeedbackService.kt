@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono
 
 @ReactiveFeignClient(
     value = "feedback-service",
-    url = "http://feedback:8088/api/v1",
+    url = "http://feedback:8088",
     fallback = FeedbackServiceFallback::class
 )
 interface FeedbackService {

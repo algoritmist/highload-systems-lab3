@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono
 
 @ReactiveFeignClient(
     value = "place-service",
-    url = "http://place:8086/api/v1",
+    url = "http://place:8086",
     fallback = PlaceServiceFallback::class
 )
 interface PlaceService {

@@ -15,8 +15,8 @@ spring:
       circuitbreaker:
         enabled: true
 
-app:
-  base-url: /api/v1
+#app:
+#  base-url:
 
 server:
   port: 8085

@@ -38,9 +38,9 @@ class WebFluxSecurityConfig @Autowired constructor(
 ) {
     companion object {
         val EXCLUDED_PATHS = arrayOf(
-            "/api/v1/auth/register",
-            "/api/v1/auth/login",
-            "/api/v1/auth/token",
+            "/auth/register",
+            "/auth/login",
+            "/auth/token",
             "/",
             "/static/**",
             "/index.html",

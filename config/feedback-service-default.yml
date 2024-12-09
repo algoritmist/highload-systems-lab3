@@ -11,8 +11,8 @@ spring:
   main:
     web-application-type: reactive
 
-app:
-  base-url: /api/v1
+#app:
+#  base-url:
 
 server:
   port: 8088

@@ -10,27 +10,27 @@ spring:
         - id: place-service
           uri: lb://PLACE-SERVICE
           predicates:
-            - Path=/api/v1/place/**
+            - Path=/place/**
         - id: route-service
           uri: lb://ROUTE-SERVICE
           predicates:
-            - Path=/api/v1/route/**
+            - Path=/route/**
         - id: feedback-service
           uri: lb://FEEDBACK-SERVICE
           predicates:
-            - Path=/api/v1/feedback/**
+            - Path=/feedback/**
         - id: favorites-service
           uri: lb://FAVORITES-SERVICE
           predicates:
-            - Path=/api/v1/favorites/**
+            - Path=/favorites/**
         - id: authentication-service
           uri: lb://AUTHENTICATION-SERVICE
           predicates:
-            - Path=/api/v1/auth/**
+            - Path=/auth/**
         - id: admin-dashboard-service
           uri: lb://ADMIN-DASHBOARD-SERVICE
           predicates:
-            - Path=/api/v1/admin/**
+            - Path=/admin/**
       discovery:
         locator:
           enabled: true
@@ -42,3 +42,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/
+
+jwt:
+  secret:
+    sign: ${JWT_SECRET:0LHQvtC20LUg0L/QvtC80L7Qs9C4INC90LDQvCDQt9Cw0LrRgNGL0YLRjCDRjdGC0L7RgiDQv9GA0LXQtNC80LXRgg==}
