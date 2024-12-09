@@ -1,9 +1,7 @@
-package config
+package itmo.highload.config
 
 import org.springframework.kafka.support.serializer.JsonSerializer
-import itmo.highload.api.actions.AuthAction
 import itmo.highload.api.dto.PlaceImage
-import itmo.highload.api.events.AuthEvent
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.context.annotation.Bean

@@ -1,4 +1,4 @@
-package service
+package itmo.highload.service
 
 import itmo.highload.api.dto.PlaceImage
 import org.springframework.kafka.core.KafkaTemplate

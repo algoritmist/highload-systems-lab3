@@ -1,12 +1,12 @@
-package controller
+package itmo.highload.controller
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import io.swagger.v3.oas.annotations.tags.Tag
 import itmo.highload.api.dto.ProcessPlaceImageRequest
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.stereotype.Controller
-import service.PlaceImageProducer
-import service.PlaceImageService
+import itmo.highload.service.PlaceImageProducer
+import itmo.highload.service.PlaceImageService
 import java.util.*
 
 

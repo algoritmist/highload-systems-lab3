@@ -1,4 +1,4 @@
-package config
+package itmo.highload.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

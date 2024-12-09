@@ -33,6 +33,10 @@ spring:
           uri: lb://ADMIN-DASHBOARD-SERVICE
           predicates:
             - Path=/admin/**
+        - id: files-service
+          uri: lb://FILES-SERVICE
+          predicates:
+            - Path=/files/**
       discovery:
         locator:
           enabled: true
