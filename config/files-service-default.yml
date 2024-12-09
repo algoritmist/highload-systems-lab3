@@ -2,7 +2,7 @@ spring:
   application:
     name: files-service
   main:
-    web-application-type: reactive
+    web-application-type: servlet
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   kafka:
