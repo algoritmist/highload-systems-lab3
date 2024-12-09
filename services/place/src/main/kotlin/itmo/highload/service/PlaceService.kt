@@ -1,6 +1,7 @@
 package itmo.highload.service
 
 import itmo.highload.api.dto.PlaceDto
+import itmo.highload.api.dto.PlaceImage
 import itmo.highload.exceptions.EntityAlreadyExistsException
 import itmo.highload.model.Place
 import itmo.highload.model.PlaceMapper
@@ -104,5 +105,12 @@ class PlaceService(
                 )
                     .then(placeRepository.delete(existingPlace))
             }
+    }
+
+    fun updatePlaceImage(image: PlaceImage) : Mono<Place>{
+        return getPlace(image.placeId).flatMap { place ->
+            place.imageUrl = image.url
+            placeRepository.save(place)
+        }
     }
 }

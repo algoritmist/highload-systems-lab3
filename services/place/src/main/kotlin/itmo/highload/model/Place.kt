@@ -31,5 +31,9 @@ data class Place(
 
     @Size(max = 500)
     @Field("description")
-    var description: String? = null
+    var description: String? = null,
+
+    @Size(max = 200)
+    @Field("imageUrl")
+    var imageUrl: String? = null
 )

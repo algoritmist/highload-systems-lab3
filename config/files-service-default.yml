@@ -5,6 +5,11 @@ spring:
     web-application-type: reactive
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  kafka:
+    bootstrap-servers:
+      - "kafka1:9091"
+      - "kafka2:9092"
+      - "kafka3:9093"
 
 server:
   port: 9333

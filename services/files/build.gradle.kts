@@ -40,6 +40,8 @@ dependencies {
 
     implementation("org.springframework:spring-websocket:6.1.14")
     implementation("org.springframework:spring-messaging:6.1.14")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.0")
+    implementation("software.amazon.awssdk:s3:2.29.20")
 }
 
 highloadApp {

@@ -9,8 +9,11 @@ import itmo.highload.api.dto.PlaceDto
 import itmo.highload.api.dto.UpdatePlaceDescriptionDto
 import itmo.highload.api.dto.UpdatePlaceNameDto
 import itmo.highload.api.dto.response.PlaceResponse
+import itmo.highload.exceptions.EntityNotFoundException
+import itmo.highload.model.Place
 import itmo.highload.model.PlaceMapper
 import itmo.highload.security.jwt.JwtUtils
+import itmo.highload.service.PlaceImageServiceSessionHandler
 import itmo.highload.service.PlaceService
 import jakarta.validation.Valid
 import jakarta.validation.constraints.DecimalMax
@@ -21,11 +24,16 @@ import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import org.springframework.kafka.annotation.KafkaListener
+import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @Tag(name = "place_controller", description = "Rest API for place service")
 @RequestMapping("/place")
-class PlaceController(val placeService: PlaceService, private val jwtUtils: JwtUtils) {
+class PlaceController(
+    val placeService: PlaceService,
+    private val jwtUtils: JwtUtils,
+    private val imageHandler: PlaceImageServiceSessionHandler
+) {
     @GetMapping
     @PreAuthorize("hasAnyAuthority('OWNER', 'USER')")
     fun getAllPlaces(): Flux<PlaceResponse> = placeService.getAllPlaces().map { PlaceMapper.toPlaceResponse(it) }
@@ -108,12 +116,5 @@ class PlaceController(val placeService: PlaceService, private val jwtUtils: JwtU
     ): Mono<Void> {
         val ownerId = jwtUtils.extractUserId(token)
         return placeService.deletePlace(id, ownerId, token)
-    }
-
-    @GetMapping("/dummy")
-    @ResponseStatus(HttpStatus.OK)
-    @KafkaListener(topics = ["example-topic"], groupId = "group_id")
-    fun receiveKafkaMessage(message: String) : Mono<String>{
-        return Mono.just(message)
     }
 }
