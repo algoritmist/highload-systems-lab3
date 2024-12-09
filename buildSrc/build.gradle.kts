@@ -12,6 +12,15 @@ repositories {
     }
 }
 
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
+}
+
+extra["springCloudVersion"] = "2023.0.0"
+
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.10")
     implementation("com.google.cloud.tools:jib-gradle-plugin:3.4.3")
