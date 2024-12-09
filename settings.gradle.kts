@@ -29,3 +29,5 @@ include("shared:integration-tests")
 findProject(":shared:integration-tests")?.name = "integration-tests"
 include("services:admin-dashboard")
 findProject(":services:admin-dashboard")?.name = "admin-dashboard"
+include("services:files")
+findProject(":services:files")?.name = "files"

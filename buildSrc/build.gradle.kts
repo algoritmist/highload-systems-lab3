@@ -2,6 +2,7 @@
 
 plugins {
     `kotlin-dsl`
+    id("io.spring.dependency-management") version "1.1.0"
 }
 
 repositories {
@@ -11,13 +12,6 @@ repositories {
         }
     }
 }
-
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
-    }
-}
-
 extra["springCloudVersion"] = "2023.0.0"
 
 
@@ -38,4 +32,10 @@ dependencies {
     // kotlin("spring")
     implementation("org.jetbrains.kotlin:kotlin-allopen:2.0.10")
     // implementation("com.google.cloud.tools:jib-gradle-plugin:3.4.2")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
 }
