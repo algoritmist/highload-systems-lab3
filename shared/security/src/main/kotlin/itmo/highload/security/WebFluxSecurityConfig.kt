@@ -49,6 +49,7 @@ class WebFluxSecurityConfig @Autowired constructor(
             "/docs.yaml",
             "/webjars/**",
             "actuator/health",
+            "/v3/api-docs/**"
         )
         val log = KotlinLogging.logger {}
     }
