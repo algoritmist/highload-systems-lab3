@@ -41,6 +41,7 @@ class WebFluxSecurityConfig @Autowired constructor(
             "/auth/register",
             "/auth/login",
             "/auth/token",
+            "/place/upload-image*/**",
             "/",
             "/static/**",
             "/index.html",

@@ -126,7 +126,12 @@ class PlaceController(
         @RequestParam file: MultipartFile,
         @RequestHeader("Authorization") token: String
     ) : Mono<String>{
-        imageHandler.handleFile(id, file)
+        /*try {
+            imageHandler.handleFile(id, file)
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+        }*/
         return Mono.just("Image processing, wait for operation to complete")
     }
 }

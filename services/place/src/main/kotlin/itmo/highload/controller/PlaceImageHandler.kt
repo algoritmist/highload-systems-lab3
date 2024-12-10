@@ -16,12 +16,12 @@ class PlaceImageHandler(
     private val expectedType = "image/"
 
     fun handleFile(placeId: String, file: MultipartFile){
-        if(file.contentType?.startsWith(expectedType) != true){
+        /*if(file.contentType?.startsWith(expectedType) != true){
             throw InvalidFileTypeException("Invalid file type")
         }
         if(file.size > maxSize){
             throw IllegalFileSizeException("File too big")
-        }
+        }*/
         client.sendProcessPlaceImageRequest(
             ProcessPlaceImageRequest(
                 placeId,
