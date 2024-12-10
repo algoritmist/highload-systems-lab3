@@ -11,6 +11,8 @@ spring:
           uri: lb://PLACE-SERVICE
           predicates:
             - Path=/place/**
+          filters:
+            - RewritePath=/place/(?<segment>/?.*), /$\{segment}
         - id: route-service
           uri: lb://ROUTE-SERVICE
           predicates:
