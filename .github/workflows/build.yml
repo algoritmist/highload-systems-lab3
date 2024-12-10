@@ -25,3 +25,6 @@ jobs:
       - name: Build app
         run: |-
           ./gradlew jibDockerBuild
+      - name: Push to registry
+        run: |-
+          chmod +x docker_push.sh & ./docker_push.sh
