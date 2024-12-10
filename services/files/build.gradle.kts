@@ -20,12 +20,15 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     implementation("org.springframework.boot:spring-boot-starter-integration")
-    implementation("software.amazon.awssdk:s3:2.29.20")
     implementation("org.springframework.kafka:spring-kafka:3.3.0")
     implementation("org.springframework:spring-websocket:6.1.14")
     implementation("org.springframework:spring-messaging:6.1.14")
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    // https://mvnrepository.com/artifact/io.minio/minio
+    implementation("io.minio:minio:8.5.12")
 
 }
 
