@@ -50,3 +50,15 @@ eureka:
 jwt:
   secret:
     sign: ${JWT_SECRET:0LHQvtC20LUg0L/QvtC80L7Qs9C4INC90LDQvCDQt9Cw0LrRgNGL0YLRjCDRjdGC0L7RgiDQv9GA0LXQtNC80LXRgg==}
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    urls:
+      - name: gateway-service
+        url: /v3/api-docs
+      - name: place-service
+        url: /place/v3/api-docs

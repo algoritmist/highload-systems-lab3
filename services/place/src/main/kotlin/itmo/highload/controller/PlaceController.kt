@@ -123,15 +123,15 @@ class PlaceController(
     @PreAuthorize("hasAuthority('OWNER')")
     fun uploadPlaceImage(
         @PathVariable id: String,
-        @RequestParam file: MultipartFile,
+        @RequestParam("file") file: MultipartFile,
         @RequestHeader("Authorization") token: String
     ) : Mono<String>{
-        /*try {
+        try {
             imageHandler.handleFile(id, file)
         }
         catch (e: Exception){
             e.printStackTrace()
-        }*/
+        }
         return Mono.just("Image processing, wait for operation to complete")
     }
 }
