@@ -8,7 +8,7 @@ spring:
     gateway:
       routes:
         - id: place-service
-          uri: "lb://place-service:8086"
+          uri: lb://PLACE-SERVICE
           predicates:
             - Path=/place/**
         - id: route-service
@@ -27,8 +27,6 @@ spring:
           uri: lb://AUTHENTICATION-SERVICE
           predicates:
             - Path=/auth/**
-            - Path=/auth/v3/api-docs
-            - Method=GET
         - id: admin-dashboard-service
           uri: lb://ADMIN-DASHBOARD-SERVICE
           predicates:
