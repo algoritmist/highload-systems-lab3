@@ -25,14 +25,15 @@ class WebSocketPlaceImageClient(
         stompClient.messageConverter = MappingJackson2MessageConverter()
         val sessionHandler = PlaceImageServiceSessionHandler()
         val websocketHost = instanceInfo.homePageUrl.replace("http", "ws")
-        logger.info("Websocket host: $websocketHost")
-        val websocketEndpoint = "${websocketHost}/process-image"
+        val websocketEndpoint = "${websocketHost}app/images"
+        logger.info("Websocket endpoint: $websocketEndpoint")
+
         val connectedSession = stompClient.connectAsync(
             URI.create(websocketEndpoint),
             null,
             null,
             sessionHandler
-        )[5, TimeUnit.SECONDS]
+        )[15, TimeUnit.SECONDS]
 
         logger.info("Created new session")
 

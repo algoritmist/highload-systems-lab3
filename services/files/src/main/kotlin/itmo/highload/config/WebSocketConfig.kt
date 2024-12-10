@@ -23,13 +23,13 @@ import org.springframework.web.socket.server.standard.ServletServerContainerFact
 class WebSocketConfig(
     private val objectMapper: ObjectMapper
 ) : WebSocketMessageBrokerConfigurer {
-    override fun configureMessageBroker(config: MessageBrokerRegistry) {
-        config.enableSimpleBroker("/topic")
-        config.setApplicationDestinationPrefixes("/app")
+    override fun configureMessageBroker(registry: MessageBrokerRegistry) {
+        registry.enableSimpleBroker("/topic")
+        registry.setApplicationDestinationPrefixes("/app")
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint("/process-image")
+        registry.addEndpoint("/app/images")
             .setAllowedOrigins("*")
     }
 

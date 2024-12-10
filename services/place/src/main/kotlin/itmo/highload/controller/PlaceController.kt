@@ -123,7 +123,7 @@ class PlaceController(
     @PreAuthorize("hasAuthority('OWNER')")
     fun uploadPlaceImage(
         @PathVariable id: String,
-        file: MultipartFile,
+        @RequestParam file: MultipartFile,
         @RequestHeader("Authorization") token: String
     ) : Mono<String>{
         imageHandler.handleFile(id, file)
