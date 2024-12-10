@@ -10,7 +10,7 @@ spring:
         - id: place-service
           uri: lb://PLACE-SERVICE
           predicates:
-            - Path=/place/**
+            - Path=/place/**, /place-api-service/**
           filters:
             - RewritePath=/place/(?<segment>/?.*), /$\{segment}
         - id: route-service
@@ -63,4 +63,4 @@ springdoc:
       - name: gateway-service
         url: /v3/api-docs
       - name: place-service
-        url: /place/v3/api-docs
+        url: /place-api/v3/api-docs
