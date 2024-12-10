@@ -25,7 +25,8 @@ class WebSocketPlaceImageClient(
         stompClient.messageConverter = MappingJackson2MessageConverter()
         val sessionHandler = PlaceImageServiceSessionHandler()
         val websocketHost = instanceInfo.homePageUrl.replace("http", "ws")
-        val websocketEndpoint = "${websocketHost}app/files"
+        logger.info("Websocket host: $websocketHost")
+        val websocketEndpoint = "${websocketHost}/process-image"
         val connectedSession = stompClient.connectAsync(
             URI.create(websocketEndpoint),
             null,
@@ -49,6 +50,6 @@ class WebSocketPlaceImageClient(
 
     fun sendProcessPlaceImageRequest(request: ProcessPlaceImageRequest) {
         val session = getSession()
-        session.send("/app/process-image", request)
+        session.send("/app", request)
     }
 }

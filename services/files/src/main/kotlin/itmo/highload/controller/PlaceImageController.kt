@@ -17,7 +17,7 @@ class PlaceImageController(
     private val placeImageService: PlaceImageService,
     private val placeImageProducer: PlaceImageProducer
 ) {
-    @MessageMapping("/process-image")
+    @MessageMapping("/app")
     fun processImage(request: ProcessPlaceImageRequest){
         val imageResource = placeImageService.processImage(
             request.placeId,

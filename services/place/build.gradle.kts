@@ -37,6 +37,12 @@ dependencies {
     @Suppress("VulnerableDependency")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.10.RELEASE")
     implementation("com.playtika.reactivefeign:feign-reactor-spring-cloud-starter:4.2.1")
+
+    implementation("org.springframework:spring-websocket:6.1.14")
+    implementation("org.springframework:spring-messaging:6.1.14")
+    // https://mvnrepository.com/artifact/jakarta.websocket/jakarta.websocket-api
+    compileOnly("jakarta.websocket:jakarta.websocket-api:2.1.1")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.3.5")
 }
 
 highloadApp {

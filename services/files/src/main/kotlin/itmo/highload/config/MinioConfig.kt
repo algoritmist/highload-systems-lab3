@@ -11,7 +11,7 @@ class MinioConfig{
     fun minioClient():MinioClient{
         return MinioClient.builder()
             .endpoint("http://minio:9000")
-            .credentials("minio", "minio")
+            .credentials("abibaboba", "abibaboba")
             .build()
     }
 }

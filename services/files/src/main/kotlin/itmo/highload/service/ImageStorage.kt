@@ -16,7 +16,7 @@ class ImageStorage(
 
     fun storeFile(placeId: String, bytes: ByteArray): String {
         val stream = ByteArrayInputStream(bytes)
-        val responce = minioClient.putObject(
+        val response = minioClient.putObject(
             PutObjectArgs.builder()
                 .bucket(bucketName)
                 .`object`(placeId)
